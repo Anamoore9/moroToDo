@@ -3,15 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 const ToDoForm = () => {
 
-    const[text,textchange]=useState("");
-    const[validation,valchange]=useState(false);
+    const[text,setText]=useState("");
+    const[validation,setValidation]=useState(false);
 
     const navigate=useNavigate();
 
     const handlesubmit=(e)=>{
         e.preventDefault();
         const taskdata={text};
-
 
         fetch("http://localhost:8080/tasks",{
             method:"POST",
@@ -37,8 +36,8 @@ const ToDoForm = () => {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="form-group">
-                                    <input required value={text} onMouseDown={e=>valchange(true)} onChange={e=>textchange(e.target.value)}></input>
-                                    {text.length==0 && validation && <span className="text-danger"></span>}
+                                    <input required value={text} onMouseDown={e=>setValidation(true)} onChange={e=>setText(e.target.value)}></input>
+                                    {text.length===0 && validation && <span className="text-danger"></span>}
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </div>
                             </div>
