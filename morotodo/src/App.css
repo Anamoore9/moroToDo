@@ -60,3 +60,8 @@
 .labelTask {
     margin-right: 10px;
 }
+
+.loading {
+    margin: auto;
+    text-align: center;
+}
